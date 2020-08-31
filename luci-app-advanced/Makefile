@@ -9,7 +9,8 @@ include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=LuCI Support for advanced
 LUCI_DEPENDS:=
-PKG_VERSION:=1.4
+PKG_NAME:=luci-app-advanced
+PKG_VERSION:=1.5
 
 include $(TOPDIR)/feeds/luci/luci.mk
 

@@ -19,7 +19,7 @@ week:value(4,translate("Thursday"))
 week:value(5,translate("Friday"))
 week:value(6,translate("Saturday"))
 week:value(0,translate("Sunday"))
-week.default=0
+week.default=7
 
 hour=s:option(Value,"hour",translate("Hour"))
 hour.datatype = "range(0,23)"
@@ -32,7 +32,7 @@ pass.rmempty = false
 
 local e=luci.http.formvalue("cbi.apply")
 if e then
-  luci.sys.call("/etc/init.d/autopoweroff restart >/dev/null")
+   io.popen("/etc/init.d/autopoweroff restart >/dev/null")
 end
 
 return m
