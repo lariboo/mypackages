@@ -17,10 +17,9 @@ t.anonymous=true
 t.addremove=true
 e=t:option(Flag,"enable",translate("开启控制"))
 e.rmempty=false
-e.default="1"
 e=t:option(Value,"macaddr",translate("黑名单MAC"))
 e.rmempty=true
-luci.sys.net.mac_hints(function(t,a)
+o.net.mac_hints(function(t,a)
 e:value(t,"%s (%s)"%{t,a})
 end)
 e=t:option(Value,"timeon",translate("禁止上网开始时间"))
@@ -31,23 +30,16 @@ e.default="23:59"
 e.optional=false
 e=t:option(Flag,"z1",translate("周一"))
 e.rmempty=true
-e.default=1
 e=t:option(Flag,"z2",translate("周二"))
 e.rmempty=true
-e.default=1
 e=t:option(Flag,"z3",translate("周三"))
 e.rmempty=true
-e.default=1
 e=t:option(Flag,"z4",translate("周四"))
 e.rmempty=true
-e.default=1
 e=t:option(Flag,"z5",translate("周五"))
 e.rmempty=true
-e.default=1
 e=t:option(Flag,"z6",translate("周六"))
 e.rmempty=true
-e.default=1
 e=t:option(Flag,"z7",translate("周日"))
 e.rmempty=true
-e.default=1
 return a

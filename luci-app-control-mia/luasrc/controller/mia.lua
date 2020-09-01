@@ -12,7 +12,7 @@ end
 
 function status()
 	local e={}
-	e.running=luci.sys.call("iptables -L FORWARD |grep MIA >/dev/null")==0
+	e.status=luci.sys.call("iptables -L FORWARD |grep MIA >/dev/null")==0
 	luci.http.prepare_content("application/json")
 	luci.http.write_json(e)
 end

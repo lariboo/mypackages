@@ -95,7 +95,6 @@ del_rule(){
 }
 
 start(){
-stop
 	! load_config && exit 0
   iptables -L FORWARD|grep -c MIA 2>/dev/null && [ $? -eq 0 ] && exit 0;
   iptables -t filter -N MIA
@@ -107,13 +106,13 @@ stop
   add_rule
 }
 stop(){
-  iptables -t filter -D FORWARD -m comment --comment "Rule For Control" -j MIA 2>/dev/null
+  iptables -t filter -D FORWARD -m comment --comment "Rule For Control" -j MIA
   iptables -D INPUT -p udp --dport 53 -m comment --comment "Rule For Control" -j MIA 2>/dev/null
   iptables -D INPUT -p tcp --dport 53 -m comment --comment "Rule For Control" -j MIA 2>/dev/null
   iptables -t nat -D PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53 -m comment --comment "Rule For Control" 2>/dev/null
   iptables -t nat -D PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53 -m comment --comment "Rule For Control" 2>/dev/null
-  iptables -t filter -F MIA 2>/dev/null
-  iptables -t filter -X MIA 2>/dev/null
+  iptables -t filter -F MIA
+  iptables -t filter -X MIA
   [ `iptables -t nat -L SS 2>/dev/null |wc -l` -gt 0 ] && del_rule SS
   [ `iptables -t nat -L KOOLPROXY 2>/dev/null |wc -l` -gt 0 ] && del_rule KOOLPROXY
 }
