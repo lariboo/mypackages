@@ -20,7 +20,7 @@ else
 	openssl req -config openssl.cnf -passin pass:koolshare \
 		-subj "/C=CN/ST=Beijing/L=KP/O=KoolProxy inc/CN=koolproxy.com" \
 		-key private/ca.key.pem \
-		-new -x509 -days 7300 -sha256 -extensions v3_ca \
+		-new -x509 -days 9900 -sha256 -extensions v3_ca \
 		-out certs/ca.crt
 
 	#step 2, domain rsa key
